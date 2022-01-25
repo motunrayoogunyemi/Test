@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+            {% set m = get_flashed_messages() %}
+                        {% if m: %}                        
+                        {% for i in m: %}  
+                        <p class="alert alert-danger">{{ i }}</p> 
+                        {% endfor %}   
+                        {% endif %}
+            <form action="" method="post">
+                <h2>Register</h2>
+                {{ form.hidden_tag() }}
+                <label for="">username</label>
+                {{ form.username(class_='form-control') }}
+                <label for="">Email</label>
+                {{ form.email(class_='form-control') }}
+                <label for="">password</label>
+                {{ form.password(class_='form-control') }}
+                <button class="btn btn-warning btn-block mt-2" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content%}
