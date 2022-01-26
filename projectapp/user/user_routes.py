@@ -2,6 +2,11 @@ from flask import flash, render_template, request, redirect, session,url_for
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, login_required, current_user, logout_user
 
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+from flask_jwt_extended import JWTManager
+
 from projectapp.forms import LoginForm, RegisterForm
 from projectapp.mymodels import db,User,Products,Category
 

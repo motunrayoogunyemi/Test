@@ -2,6 +2,7 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
+from flask_jwt_extended import JWTManager
 from projectapp import user
 
 from projectapp.user import userobj
@@ -29,6 +30,8 @@ def create_app():
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
+
+    jwt = JWTManager(app)
 
     app.register_blueprint(userobj)
     app.register_blueprint(apiobj)
